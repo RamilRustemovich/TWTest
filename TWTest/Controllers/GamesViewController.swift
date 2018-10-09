@@ -42,12 +42,22 @@ class GamesViewController: UIViewController {
         }
     }
     
-    
+    // MARK: Seque
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "streamShowVC" {
+            if let streamVC = segue.destination as? StreamsViewController {
+                if let game = sender as? Game {
+                    streamVC.game = game
+                }                
+            }
+        }
+    }
 }
 
 extension GamesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let game = GameDataService.instance.games[indexPath.row]
+        performSegue(withIdentifier: "streamShowVC", sender: game)
     }
 }
 

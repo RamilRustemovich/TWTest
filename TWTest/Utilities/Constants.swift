@@ -13,4 +13,8 @@ import Foundation
 
 let twitchURLTOPgames = "https://api.twitch.tv/kraken/games/top?limit=50&client_id=ldf0z7w37ki9guj2cgnjkfsyf482n0"
 
+let twitchURLstreamsBase = "https://api.twitch.tv/kraken/streams/?game="
+
+let twitchUrlStreamsClientId = "&client_id=ldf0z7w37ki9guj2cgnjkfsyf482n0"
+
 typealias DownloadComplete = () -> ()

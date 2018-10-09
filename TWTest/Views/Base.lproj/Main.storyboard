@@ -6,9 +6,17 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Games View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -72,11 +80,97 @@
                     <connections>
                         <outlet property="gamesCollectionView" destination="UmS-SJ-8GA" id="s9B-SN-6jV"/>
                         <outlet property="loadingIndicator" destination="n1i-5k-Yhr" id="elg-iB-8n3"/>
+                        <segue destination="8Fb-ji-FLS" kind="show" identifier="streamShowVC" id="XJp-Ag-URn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="456.80000000000001" y="118.29085457271366"/>
+        </scene>
+        <!--Streams View Controller-->
+        <scene sceneID="0ud-Wj-oj8">
+            <objects>
+                <viewController id="8Fb-ji-FLS" customClass="StreamsViewController" customModule="TWTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NbZ-AS-m5D">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wsZ-Qy-yqO">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StreamCell" rowHeight="200" id="hjS-b6-CUB" customClass="StreamCell" customModule="TWTest" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hjS-b6-CUB" id="sv8-uZ-iaw">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yw9-9L-gz9">
+                                                    <rect key="frame" x="8" y="8" width="359" height="183.5"/>
+                                                    <color key="backgroundColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="rSp-VF-ToE">
+                                                    <rect key="frame" x="23" y="126" width="287" height="55"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Broadcaster" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IvQ-xe-B3Z">
+                                                            <rect key="frame" x="0.0" y="0.0" width="287" height="19"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stream Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8s6-1b-iDh">
+                                                            <rect key="frame" x="0.0" y="20" width="287" height="18"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Viewers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hew-Jc-kAR">
+                                                            <rect key="frame" x="0.0" y="39" width="287" height="16"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Yw9-9L-gz9" firstAttribute="leading" secondItem="sv8-uZ-iaw" secondAttribute="leading" constant="8" id="RJu-Na-38h"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="rSp-VF-ToE" secondAttribute="bottom" constant="8" id="WWa-Nd-8Nf"/>
+                                                <constraint firstItem="Yw9-9L-gz9" firstAttribute="top" secondItem="sv8-uZ-iaw" secondAttribute="top" constant="8" id="WzC-IS-ZC7"/>
+                                                <constraint firstItem="rSp-VF-ToE" firstAttribute="width" secondItem="Yw9-9L-gz9" secondAttribute="width" multiplier="0.8" id="aZn-EU-dVq"/>
+                                                <constraint firstItem="rSp-VF-ToE" firstAttribute="height" secondItem="Yw9-9L-gz9" secondAttribute="height" multiplier="0.3" id="eFS-rX-dqH"/>
+                                                <constraint firstAttribute="bottom" secondItem="Yw9-9L-gz9" secondAttribute="bottom" constant="8" id="tgc-A5-NCY"/>
+                                                <constraint firstAttribute="trailing" secondItem="Yw9-9L-gz9" secondAttribute="trailing" constant="8" id="tvb-qR-Uvy"/>
+                                                <constraint firstItem="rSp-VF-ToE" firstAttribute="leading" secondItem="sv8-uZ-iaw" secondAttribute="leadingMargin" constant="8" id="zb7-tG-fqB"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="broadcasterName" destination="IvQ-xe-B3Z" id="z8u-Gi-53j"/>
+                                            <outlet property="streamImageView" destination="Yw9-9L-gz9" id="Md5-TU-Pcv"/>
+                                            <outlet property="streamTitle" destination="8s6-1b-iDh" id="Mai-0p-YgT"/>
+                                            <outlet property="streamViewers" destination="Hew-Jc-kAR" id="js9-Lo-p3u"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wsZ-Qy-yqO" firstAttribute="top" secondItem="3Vs-JX-lAs" secondAttribute="top" id="HOV-Ah-4DT"/>
+                            <constraint firstItem="wsZ-Qy-yqO" firstAttribute="leading" secondItem="3Vs-JX-lAs" secondAttribute="leading" id="UVv-aI-pei"/>
+                            <constraint firstItem="3Vs-JX-lAs" firstAttribute="bottom" secondItem="wsZ-Qy-yqO" secondAttribute="bottom" id="sWH-AJ-iRi"/>
+                            <constraint firstItem="3Vs-JX-lAs" firstAttribute="trailing" secondItem="wsZ-Qy-yqO" secondAttribute="trailing" id="vBW-ke-cdo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3Vs-JX-lAs"/>
+                    </view>
+                    <connections>
+                        <outlet property="streamsTableView" destination="wsZ-Qy-yqO" id="c0Z-mo-YFm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EIO-7N-F1n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1223" y="119"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zt8-IE-lr1">
