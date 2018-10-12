@@ -166,11 +166,27 @@
                     </view>
                     <connections>
                         <outlet property="streamsTableView" destination="wsZ-Qy-yqO" id="c0Z-mo-YFm"/>
+                        <segue destination="hkH-7x-JCb" kind="show" identifier="channelShowVC" id="ktX-JB-guz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EIO-7N-F1n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1223" y="119"/>
+        </scene>
+        <!--Channel View Controller-->
+        <scene sceneID="Ecv-J6-gbw">
+            <objects>
+                <viewController id="hkH-7x-JCb" customClass="ChannelViewController" customModule="TWTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fa1-6o-gPe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="uMP-DL-coA"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mjV-7M-4Hy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2025" y="118"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zt8-IE-lr1">

@@ -8,13 +8,13 @@
 
 import Foundation
 
-//ldf0z7w37ki9guj2cgnjkfsyf482n0
-// https://api.twitch.tv/kraken/games/top
+let twitchUrlTopGames = "https://api.twitch.tv/kraken/games/top?limit=50&client_id=ldf0z7w37ki9guj2cgnjkfsyf482n0"
 
-let twitchURLTOPgames = "https://api.twitch.tv/kraken/games/top?limit=50&client_id=ldf0z7w37ki9guj2cgnjkfsyf482n0"
-
-let twitchURLstreamsBase = "https://api.twitch.tv/kraken/streams/?game="
-
+let twitchUrlStreamsBase = "https://api.twitch.tv/kraken/streams/?game="
 let twitchUrlStreamsClientId = "&client_id=ldf0z7w37ki9guj2cgnjkfsyf482n0"
+
+let twitchUrlChannel = "https://player.twitch.tv/?channel="
+
+let twitchUrlStreamDeepLink = "twitch://open?tream="
 
 typealias DownloadComplete = () -> ()

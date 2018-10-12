@@ -12,17 +12,14 @@ import Alamofire
 class GameDataService {
     
     static let instance = GameDataService()
-    
     var games = [Game]()
     
     func downloadTopGames(completed: @escaping DownloadComplete) {
         
-        let url = twitchURLTOPgames
+        let url = twitchUrlTopGames
         var nameString, imageUrlString: String!
         
         request(url).responseJSON { (response) in
-            print(response)
-            
             if let JSON = response.result.value as? [String: Any] {
                 if let topGamesArray = JSON["top"] as? [[String: Any]], topGamesArray.count > 0 {
                     
@@ -38,13 +35,11 @@ class GameDataService {
                                 }
                             }
                         }
-                    
                         let game = Game(name: nameString, imageURL: imageUrlString)
                         self.games.append(game)
                     }
                 }
             }
-            
             completed()
         }
     }

@@ -19,5 +19,4 @@ class GameCell: UICollectionViewCell {
             gameImageView.layer.masksToBounds = true
         }
     }
-    
 }

@@ -54,6 +54,7 @@ class GamesViewController: UIViewController {
     }
 }
 
+
 extension GamesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let game = GameDataService.instance.games[indexPath.row]

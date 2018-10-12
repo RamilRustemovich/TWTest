@@ -37,10 +37,48 @@ class StreamsViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+    
         StreamDataService.instance.removeAllStreams()
     }
+    
+    // Huandler function to open stream in chosen app
+    func openStream(_ stream: Stream) {
+        let alert = UIAlertController(title: "Open stream in TWTest or in official Twitch app?", message: "Official Twitch app must be installed for later option", preferredStyle: .alert)
+        let openInTWTestAction = UIAlertAction(title: "TWTest", style: .default) { [weak self] (action) in
+            self?.performSegue(withIdentifier: "channelShowVC", sender: stream)
+        }
+        let openInTwitchAppAction = UIAlertAction(title: "Twitch", style: .default) { [weak self] (action) in
+            self?.openStreamInTwitchApp(stream)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alert.addAction(openInTWTestAction)
+        alert.addAction(openInTwitchAppAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: Segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "channelShowVC" else { return }
+        guard let channelVC = segue.destination as? ChannelViewController else { return }
+        guard let stream = sender as? Stream else { return }
+        channelVC.stream = stream
+    }
+    
+    // MARK: Mobile Deep Link
+    func openStreamInTwitchApp(_ stream: Stream) {
+        let streamString = twitchUrlStreamDeepLink + stream.broadcasterName
+        
+        if let streamUrl = URL(string: streamString) {
+            if UIApplication.shared.canOpenURL(streamUrl) {
+                UIApplication.shared.open(streamUrl, options: [:], completionHandler: nil)
+            }
+        }
+    }
 }
+
 
 extension StreamsViewController: UITableViewDelegate {
     
@@ -49,9 +87,9 @@ extension StreamsViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let stream = StreamDataService.instance.streams[indexPath.row]
+        openStream(stream)
     }
-    
 }
 
 extension StreamsViewController: UITableViewDataSource {

@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 
 class StreamDataService {
+    
     static let instance = StreamDataService()
     var streams = [Stream]()
     
@@ -18,7 +19,7 @@ class StreamDataService {
         var imageUrlString, nameString, titleString: String!
         
         let gameString = game.gameName.replacingOccurrences(of: " ", with: "+")
-        let url = twitchURLstreamsBase + gameString + twitchUrlStreamsClientId
+        let url = twitchUrlStreamsBase + gameString + twitchUrlStreamsClientId
         
         request(url).responseJSON { [weak self] (response) in
             guard let JSON = response.result.value as? [String: Any] else { completed(); return }

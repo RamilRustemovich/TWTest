@@ -27,5 +27,4 @@ class StreamCell: UITableViewCell {
             streamImageView.image = stream.streamImage
         }
     }
-
 }
